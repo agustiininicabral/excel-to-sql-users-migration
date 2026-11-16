@@ -27,6 +27,12 @@ mysql -u root -p < sql/001_create_schema.sql
 PYTHONPATH=src python -m migration.main --input data/source/users_source.xlsx
 ```
 
+## Visual overview
+
+![Migration architecture](docs/architecture.svg)
+
+![Sample data quality summary](docs/quality-summary.svg)
+
 ## Quality rules
 | Condition | Action |
 |---|---|
