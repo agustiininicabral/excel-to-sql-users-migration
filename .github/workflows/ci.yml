@@ -23,3 +23,13 @@ jobs:
         run: python -m migration.main --dry-run --input data/source/users_source.xlsx
         env:
           PYTHONPATH: src
+
+      - name: Upload dry-run evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: users-migration-validation
+          path: |
+            reports/*.csv
+            data/source/users_source.xlsx
+          if-no-files-found: warn
