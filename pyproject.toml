@@ -1,0 +1,10 @@
+[project]
+name = "excel-to-sql-users-migration"
+version = "1.0.0"
+description = "Reproducible Excel-to-MySQL users migration practice project"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
