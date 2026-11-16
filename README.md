@@ -49,7 +49,7 @@ Allowed statuses: `active`, `inactive`, `pending`.
 ## Contents
 `data/` synthetic source and workbook; `src/` cleaning, configuration, loader and CLI; `sql/` MySQL schema and validation queries; `tests/` automated tests; `docs/` design and quality documentation.
 
-Run tests with `pytest`. GitHub Actions generates the workbook, runs tests, and executes a dry-run on pushes and pull requests.
+Run tests with `pytest`. GitHub Actions starts an ephemeral MySQL 8.0 service, generates the workbook, runs tests and a dry-run, applies the schema, performs the real load, and verifies persisted row counts and data-quality constraints. `scripts/apply_schema.py` and `scripts/verify_database.py` make the database checks reproducible.
 
 ## Limitations
 Single worksheet and small synthetic dataset. The first-valid-row duplicate policy is illustrative. A real migration needs an approved survivorship rule, source snapshot, backups, reconciliation, structured logging, secret management, and a tested rollback plan. No real personal data is included.
