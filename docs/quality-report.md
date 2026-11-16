@@ -18,4 +18,9 @@ No row is silently discarded. Accepted and rejected outputs reconcile to the ori
 - [x] Accepted emails are lowercase and unique.
 - [x] Accepted rows have names, valid dates, and allowed statuses.
 - [x] Every rejected row has an explicit reason.
-- [ ] MySQL row count reconciles with accepted rows after a clean local database load.
+- [x] GitHub Actions loaded all 26 accepted rows into an ephemeral MySQL 8.0 instance and verified row count, normalized emails, required fields, and uniqueness.
+
+
+## Database integration
+
+The CI run executes the actual transactional loader against a disposable MySQL 8.0 service. It verifies 26 persisted users; no production database or personal data is used.
