@@ -17,7 +17,7 @@ def normalize_email(value: Any) -> str | None:
 
 def parse_created_at(value: Any):
     if value is None or pd.isna(value): return None
-    parsed = pd.to_datetime(value, dayfirst=True, errors="coerce")
+    parsed = pd.to_datetime(value, format="mixed", dayfirst=True, errors="coerce")
     return None if pd.isna(parsed) else parsed.date()
 
 def clean_users(frame: pd.DataFrame):
