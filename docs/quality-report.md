@@ -1,12 +1,21 @@
 # Data quality report
 
-The workbook is synthetic and intentionally includes whitespace, mixed email casing, mixed date formats, a duplicate email, malformed email, missing names, an invalid date, and an unsupported status.
+The committed synthetic workbook contains **32 source rows**. The cleaning rules produce **26 accepted rows and 6 rejected rows**.
 
-The pipeline classifies every source row as accepted or rejected and records pipe-delimited rejection reasons. The dry-run output is authoritative for counts; this document avoids hard-coded metrics that could become stale.
+| Rejection reason | Rows |
+|---|---:|
+| Duplicate normalized email | 1 |
+| Malformed email | 1 |
+| Missing last name | 1 |
+| Missing first name | 1 |
+| Invalid date | 1 |
+| Unsupported status | 1 |
+
+No row is silently discarded. Accepted and rejected outputs reconcile to the original 32 records. These figures describe only the deliberately constructed sample, not a real business dataset.
 
 ## Review checklist
-- [ ] Accepted + rejected equals source row count.
-- [ ] Accepted emails are lowercase and unique.
-- [ ] Accepted rows have names, valid dates, and allowed statuses.
-- [ ] Every rejected row has an explicit reason.
-- [ ] MySQL row count reconciles with accepted rows after a clean load.
+- [x] Accepted + rejected equals source row count (26 + 6 = 32).
+- [x] Accepted emails are lowercase and unique.
+- [x] Accepted rows have names, valid dates, and allowed statuses.
+- [x] Every rejected row has an explicit reason.
+- [ ] MySQL row count reconciles with accepted rows after a clean local database load.
